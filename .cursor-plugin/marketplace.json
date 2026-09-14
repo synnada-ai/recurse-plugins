@@ -1,0 +1,17 @@
+{
+  "name": "synnada-recurse",
+  "owner": {
+    "name": "Synnada"
+  },
+  "metadata": {
+    "description": "Recurse plugins by Synnada. Build reusable agentic workloads with serverless execution."
+  },
+  "plugins": [
+    {
+      "name": "recurse",
+      "source": "./plugins/recurse",
+      "description": "Build reusable agentic workloads. Explore alternatives and check results with serverless execution on Recurse. Expose as MCP or run to completion.",
+      "logo": "assets/recurse-logo.svg"
+    }
+  ]
+}

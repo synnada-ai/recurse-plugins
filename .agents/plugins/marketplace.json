@@ -1,0 +1,20 @@
+{
+  "name": "synnada-recurse",
+  "interface": {
+    "displayName": "Synnada Recurse"
+  },
+  "plugins": [
+    {
+      "name": "recurse",
+      "source": {
+        "source": "local",
+        "path": "./plugins/recurse"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
