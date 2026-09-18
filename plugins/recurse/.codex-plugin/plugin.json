@@ -1,6 +1,6 @@
 {
   "name": "recurse",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Build reusable agentic workloads. Explore alternatives and check results with serverless execution on Recurse. Expose as MCP or run to completion.",
   "author": {
     "name": "Synnada"

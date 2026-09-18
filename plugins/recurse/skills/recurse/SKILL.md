@@ -66,7 +66,7 @@ Separate feasibility from quality. All checks must pass before a candidate can w
 
 Create a `prompts.md` file to house your custom agent's instructions for the specific problem it will solve, and set `agent.prompt: prompts.md` in `agent.yaml`. Use the final proposal, the actual tools, and verifiers as a starting point and/or a reference. Explain the following clearly:
 - What outcome to improve, how to measure it, and what makes one feasible result better than another.
-- Which requirements are hard constraints, which choices the agent can explore, and which domain facts constitute implicit constraints.
+- Which requirements are hard constraints, what degrees of freedom the agent can explore, and which domain facts constitute implicit constraints.
 - What the verifiers measure, how those measurements relate to the overall goal and constraints, and what they do not establish. Include domain knowledge necessary to interpret failures and trade-offs.
 - What defines completion or convergence for the agent; i.e. when does the agent stop iterative refinement and report results.
 - What evidence and artifacts the agent must return; and any conditions, allowances or restrictions that the agent must comply with.
@@ -259,7 +259,7 @@ Select a model in `agent.model`, such as `gpt-6-astra`, or omit it for the servi
 
 ## Run or reuse
 
-Use `run` for one substantial search or while shaping/designing new agents. Deploy as MCP after evidence shows the agent is reusable.
+Use `run` for a one-off execution or while shaping/designing new agents. Deploy as MCP after evidence shows the agent is reusable.
 
 ```sh
 recurse login
@@ -269,7 +269,14 @@ recurse deploy ./my-agent --as mcp
 
 Runs have a 15-minute execution limit. Use `recurse status <run-id>` to inspect the run or `recurse cancel <run-id>` to request cancellation. Download available artifacts within 24 hours using `recurse artifacts <run-id> --output results`.
 
-Connect an MCP host through `recurse mcp serve <deployment-id>`. For Codex, set `startup_timeout_sec = 180` and `tool_timeout_sec = 1140` in the server configuration so a long run is not cut short by the host. See the [deployment guide](https://recurse.run/docs/deploy).
+Connect an MCP host via `recurse mcp serve <deployment-id>`. For Codex, set `startup_timeout_sec = 180` and `tool_timeout_sec = 1140` in the server configuration so a long run is not cut short by the host. See the [deployment guide](https://recurse.run/docs/deploy).
+
+## Troubleshooting
+
+If you're experiencing a persistent issue with Recurse, try these steps:
+- Upgrade `recurse-sdk`.
+- Refresh the skill.
+- Check the relevant section in the [documentation](https://recurse.run/docs/).
 
 ## Using the Recurse CLI
 
@@ -301,13 +308,13 @@ The CLI packages, uploads, and prepares the application, prints `run: <run-id>`,
 | Direct-run exit code | Meaning |
 | --- | --- |
 | `0` | Run is successful; inspect the receipt to evaluate the results. |
-| `1` | Agent failure or a CLI error. |
-| `2` | Run times out, or the CLI rejects invalid command syntax. |
+| `1` | Agent failure or a CLI error, including invalid command syntax. |
+| `2` | The service confirms that the run timed out. |
 | `3` | The CLI observes remote cancellation. |
 | `4` | Infrastructure failure. |
 | `130` | CLI interrupted by Ctrl-C; inspect the reported remote state. |
 
-Use the printed run status and error to distinguish a remote failure from a local CLI error. Exit code `2` alone does not establish that a run started or timed out.
+Exit code `2` is reserved for a confirmed remote timeout. Other CLI errors, including invalid command syntax, exit `1`; inspect stderr and any printed run state before deciding whether to retry.
 
 | Public error | Next step |
 | --- | --- |
