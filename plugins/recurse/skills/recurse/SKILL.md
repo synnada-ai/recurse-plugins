@@ -308,13 +308,14 @@ The CLI packages, uploads, and prepares the application, prints `run: <run-id>`,
 | Direct-run exit code | Meaning |
 | --- | --- |
 | `0` | Run is successful; inspect the receipt to evaluate the results. |
-| `1` | Agent failure or a CLI error, including invalid command syntax. |
-| `2` | The service confirms that the run timed out. |
-| `3` | The CLI observes remote cancellation. |
-| `4` | Infrastructure failure. |
+| `1` | Confirmed agent failure. |
+| `2` | CLI-layer error. |
+| `3` | Confirmed remote cancellation. |
+| `4` | Confirmed infrastructure failure. |
+| `5` | Confirmed agent timeout. |
 | `130` | CLI interrupted by Ctrl-C; inspect the reported remote state. |
 
-Exit code `2` is reserved for a confirmed remote timeout. Other CLI errors, including invalid command syntax, exit `1`; inspect stderr and any printed run state before deciding whether to retry.
+Codes `1`, `3`, `4`, and `5` are confirmed terminal run states. Code `2` covers every failure produced by the CLI rather than the run: invalid command syntax or option values, local input and packaging errors, authentication failures, request and transport failures, malformed service responses, and `observation_timeout` where remote state is unconfirmed. On `2`, inspect stderr and any printed run state before deciding whether to retry.
 
 | Public error | Next step |
 | --- | --- |
