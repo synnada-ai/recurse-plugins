@@ -17,7 +17,7 @@ Recurse generates MCP deployments from your workloads. Installing this plugin do
 ## Requirements
 
 - A compatible Cursor, Codex, or Claude Code installation with plugins enabled.
-- Python 3.14 or newer and the Recurse SDK.
+- Python 3.14 or newer and Recurse SDK 0.2.1 or newer.
 - A Recurse account, network access, and sufficient credit for hosted execution.
 
 In your Python environment:
