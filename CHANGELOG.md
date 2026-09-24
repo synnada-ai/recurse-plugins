@@ -1,5 +1,9 @@
 # Release notes
 
+## 0.2.6 — 2026-09-24
+
+- Match the new 768 MiB minimum run memory ceiling; the default remains 1024 MiB.
+
 ## 0.2.5 — 2026-09-24
 
 - Synchronize the coding-agent skill with the released website and Recurse SDK 0.2.1.

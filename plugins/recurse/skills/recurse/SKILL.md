@@ -301,7 +301,7 @@ recurse run ./my-agent --inputs inputs.json
 recurse run ./my-agent --inputs - --cpu 2 --memory-mib 2048 < inputs.json
 ```
 
-Both `run` and `deploy` default to 1 CPU and 1024 MiB. `--cpu` accepts 0.125–16 in 0.125 increments; `--memory-mib` accepts 512–16384 in 128 MiB increments. These are billable ceilings; select them to fit requirements of the problem and your allowance.
+Both `run` and `deploy` default to 1 CPU and 1024 MiB. `--cpu` accepts 0.125–16 in 0.125 increments; `--memory-mib` accepts 768–16384 in 128 MiB increments. These are billable ceilings; select them to fit requirements of the problem and your allowance.
 
 The CLI packages, uploads, and prepares the application, writes the admitted run ID to stdout immediately, and appends the confirmed outcome to the same version-1 YAML document. Wait for the command to finish before parsing the document. The snapshot includes `status`, `outputs.result`, `outputs.artifacts`, and settled `cost.total_microusd`; `error` appears when needed. A run ID identifies one execution; running the command again starts another billable execution.
 
