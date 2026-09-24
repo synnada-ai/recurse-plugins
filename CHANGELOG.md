@@ -1,5 +1,9 @@
 # Release notes
 
+## 0.2.7 — 2026-09-24
+
+- Restore the 512 MiB minimum run memory ceiling and recommend SDK 0.2.3, which accepts it locally; the default remains 1024 MiB.
+
 ## 0.2.6 — 2026-09-24
 
 - Match the new 768 MiB minimum run memory ceiling and recommend SDK 0.2.2, which validates it locally; the default remains 1024 MiB.
