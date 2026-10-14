@@ -27,12 +27,14 @@ Authenticate explicitly with `recurse login` before connecting. The Tools bridge
 
 Earlier releases used `recurse@synnada-recurse` for agent authoring. The new marketplace is `synnada-recurse-plugins`; the old selector must not be repointed to Tools. A version bump or a different ZIP filename does not migrate an existing installation.
 
+Also inspect any standalone agent skill installed from the legacy `/SKILL.md` URL or the older private `recurse@personal` catalog. Keep that guidance until Agents is verified, then disable or remove its old discovery entry before installing Tools.
+
 1. Add this checkout as a separate marketplace and install `recurse-agents@synnada-recurse-plugins`.
 2. Start a new session. Verify **Recurse Agents**, version 0.3.0, and the `recurse-agents` skill with the existing agent workflow.
 3. Disable or remove the legacy `recurse@synnada-recurse` agent plugin using the host's supported plugin controls. Preserve its catalog and cached package until the new installation is verified.
 4. Install `recurse@synnada-recurse-plugins` for Tools. Start a new session and verify **Recurse**, version 0.3.0, and exactly one `recurse-tools` server.
 
-Codex CLI 0.151.0 verified distinct cached identities for the released legacy package and the new Agents package, followed by removal of the legacy plugin and installation of Tools. A fresh bundled Codex 0.162.0-alpha.17.2 session loaded both skills and inspected the live TEST catalog. Claude manifests passed strict validation; Claude and Cursor behavior still need owner UAT. If adding the new source replaces the legacy identity or its instructions, stop the migration and keep the legacy installation separate.
+Codex CLI 0.151.0 verified distinct cached identities for the released legacy package and the new Agents package, followed by removal of the legacy plugin and installation of Tools. A fresh bundled Codex 0.162.0-alpha.17.2 session loaded both skills and inspected the live TEST catalog. Refreshing the old Git marketplace against the new catalog failed on the name mismatch and preserved its cached Agent snapshot. Claude manifests passed strict validation; Claude and Cursor behavior still need owner UAT. If adding the new source replaces the legacy identity or its instructions, stop the migration and keep the legacy installation separate.
 
 ## Install from a checkout
 
