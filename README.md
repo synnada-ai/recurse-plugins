@@ -2,7 +2,7 @@
 
 ![Recurse](plugins/recurse/assets/recurse-icon.png)
 
-Two plugins by Synnada, prepared together as unpublished version 0.3.0 candidates:
+Two plugins by Synnada, version 0.3.0:
 
 | Plugin | Use it for | Skill |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ Recurse Agents preserves the existing agent-authoring guidance. It has no precon
 
 - A compatible Codex, Claude Code, or Cursor installation with plugins enabled.
 - Python 3.14 or newer and a Recurse account.
-- For Tools, a Tools-capable Recurse SDK build that provides `recurse tools mcp serve`. Check `recurse tools mcp serve --help` before connecting. The M5 candidate uses the unreleased SDK 0.2.4 build; this checkout does not install it.
+- For Tools, Recurse SDK 0.2.5 or newer, which provides `recurse tools mcp serve`. Check `recurse tools mcp serve --help` before connecting. This checkout does not install the SDK.
 - For Agents, Recurse SDK 0.2.3 or newer.
 - Network access and sufficient account credit for paid work.
 
@@ -75,7 +75,7 @@ The native Tools package launches `recurse` with arguments `["tools", "mcp", "se
 
 Portable hosts use root `mcp.json`, including the Agent Plugins schema and explicit `type: "stdio"`. Compatibility manifests point to `.mcp.json`, which uses the host's command-based format. Both files contain one server named `recurse-tools`. Cursor's explicit `mcpServers` path overrides automatic `mcp.json` discovery; Claude Code merges the default and declared configuration by server name. OpenAI's root `extensions.com.openai` replaces its compatibility overlay, so the complete interface is copied into both. See the [OpenAI](https://developers.openai.com/plugins/build/plugins), [Claude Code](https://code.claude.com/docs/en/plugins-reference), and [Cursor](https://cursor.com/docs/reference/plugins) format references. Confirm one effective connection in the host; do not add a second manual Tools server.
 
-An OpenAI upload candidate is prepared separately with a verified remote HTTPS endpoint and OAuth. This native stdio checkout is not a production upload artifact. Production promotion, portal review, and publication remain separate from this candidate.
+OpenAI upload archives are prepared separately with a verified remote HTTPS endpoint and OAuth. This native stdio checkout is not an OpenAI upload artifact. Portal review and publication remain separate steps.
 
 ## Try and update
 
