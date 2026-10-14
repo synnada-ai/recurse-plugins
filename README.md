@@ -32,7 +32,7 @@ Earlier releases used `recurse@synnada-recurse` for agent authoring. The new mar
 3. Disable or remove the legacy `recurse@synnada-recurse` agent plugin using the host's supported plugin controls. Preserve its catalog and cached package until the new installation is verified.
 4. Install `recurse@synnada-recurse-plugins` for Tools. Start a new session and verify **Recurse**, version 0.3.0, and exactly one `recurse-tools` server.
 
-Codex CLI 0.151.0 verified distinct cached identities for the released legacy package and the new Agents package, followed by removal of the legacy plugin and installation of Tools. Fresh-session connection checks and other hosts are recorded separately in M5 UAT. If adding the new source replaces the legacy identity or its instructions, stop the migration and keep the legacy installation separate.
+Codex CLI 0.151.0 verified distinct cached identities for the released legacy package and the new Agents package, followed by removal of the legacy plugin and installation of Tools. A fresh bundled Codex 0.162.0-alpha.17.2 session loaded both skills and inspected the live TEST catalog. Claude manifests passed strict validation; Claude and Cursor behavior still need owner UAT. If adding the new source replaces the legacy identity or its instructions, stop the migration and keep the legacy installation separate.
 
 ## Install from a checkout
 
@@ -69,7 +69,7 @@ Before replacing an existing `recurse` directory, preserve and disable the legac
 
 ## Connection formats
 
-The native Tools package launches `recurse` with arguments `["tools", "mcp", "serve"]` over stdio. TEST or production selection comes from the host's local SDK environment; the package contains no fixed service URL or secrets.
+The native Tools package launches `recurse` with arguments `["tools", "mcp", "serve"]` over stdio. The package contains no fixed service URL or secrets. For TEST, pass `RECURSE_API_URL=https://api.dev.recurse.run` and `RECURSE_TOOLS_URL=https://tools.dev.recurse.run` through the host's supported MCP environment settings. Codex filters ambient variables for MCP subprocesses; setting them only in the parent shell is insufficient. M5 used a per-session environment override with the unchanged command and arguments and verified one effective connection. Default production connection is checked after promotion.
 
 Portable hosts use root `mcp.json`, including the Agent Plugins schema and explicit `type: "stdio"`. Compatibility manifests point to `.mcp.json`, which uses the host's command-based format. Both files contain one server named `recurse-tools`. Cursor's explicit `mcpServers` path overrides automatic `mcp.json` discovery; Claude Code merges the default and declared configuration by server name. OpenAI's root `extensions.com.openai` replaces its compatibility overlay, so the complete interface is copied into both. See the [OpenAI](https://developers.openai.com/plugins/build/plugins), [Claude Code](https://code.claude.com/docs/en/plugins-reference), and [Cursor](https://cursor.com/docs/reference/plugins) format references. Confirm one effective connection in the host; do not add a second manual Tools server.
 
