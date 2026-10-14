@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "recurse-agents",
+  "version": "0.3.0",
+  "description": "Build reusable agentic workloads. Explore alternatives and check results with serverless execution on Recurse. Expose as MCP or run to completion.",
+  "author": {
+    "name": "Synnada"
+  },
+  "homepage": "https://recurse.run",
+  "license": "Apache-2.0",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Recurse Agents",
+        "shortDescription": "Build reusable agents",
+        "longDescription": "Your coding agent uses Recurse to define Python tools and checks around a task. An LLM calls those tools to explore alternatives and refine results. Execution is serverless: expose the workload as an MCP server for use in agentic workflows, or run it to completion. Requires the Recurse SDK and a Recurse account.",
+        "developerName": "Synnada",
+        "category": "Productivity",
+        "capabilities": [],
+        "defaultPrompt": [
+          "Design a Python workload that tests code changes against a benchmark.",
+          "Plan a Recurse workload that generates puzzle levels and checks solvability.",
+          "Help me expose a tested Recurse workload through MCP."
+        ],
+        "websiteURL": "https://recurse.run",
+        "brandColor": "#5c3df5",
+        "composerIcon": "./assets/recurse-icon.png",
+        "logo": "./assets/recurse-logo.png"
+      }
+    }
+  }
+}

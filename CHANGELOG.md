@@ -1,5 +1,14 @@
 # Release notes
 
+## 0.3.0 — 2026-10-14
+
+- Rename the existing agent-authoring package and skill to Recurse Agents (`recurse-agents`), preserving the current agent instructions and prompt examples.
+- Include the native run trace guidance already present in canonical website main ([web #229](https://github.com/synnada-ai/recurse-web/pull/229)); the legacy website skill stays unchanged.
+- Add Recurse (`recurse`) for consumer Tools discovery, inspected calls, stored results, and cancellation through five stable operations.
+- Use the separate `synnada-recurse-plugins` marketplace and document migration from the legacy agent selector. Distinct cached identities were verified with Codex CLI 0.151.0; other host migration checks remain separate.
+- Synchronize both packages' four manifests at 0.3.0, copy OpenAI presentation metadata into the portable manifests, and reuse the existing brand assets and licensing.
+- Wire native Tools through `recurse tools mcp serve`; remote OpenAI upload candidates and production publication are prepared separately.
+
 ## 0.2.7 — 2026-09-24
 
 - Restore the 512 MiB minimum run memory ceiling and recommend SDK 0.2.3, which accepts it locally; the default remains 1024 MiB.

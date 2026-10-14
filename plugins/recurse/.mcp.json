@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "recurse-tools": {
+      "command": "recurse",
+      "args": [
+        "tools",
+        "mcp",
+        "serve"
+      ]
+    }
+  }
+}

@@ -1,10 +1,11 @@
 {
   "name": "recurse",
-  "version": "0.2.7",
-  "description": "Build reusable agentic workloads. Explore alternatives and check results with serverless execution on Recurse. Expose as MCP or run to completion.",
+  "version": "0.3.0",
+  "description": "Discover and call hosted tools through Recurse. Inspect current schemas and prices, set a spending cap, and retrieve stored results.",
   "author": {
     "name": "Synnada"
   },
   "homepage": "https://recurse.run",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "mcpServers": "./.mcp.json"
 }
