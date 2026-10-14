@@ -1,6 +1,6 @@
 # Release notes
 
-## 0.3.0 candidate — 2026-10-14
+## 0.3.0 — 2026-10-14
 
 - Rename the existing agent-authoring package and skill to Recurse Agents (`recurse-agents`), preserving the current agent instructions and prompt examples.
 - Include the native run trace guidance already present in canonical website main ([web #229](https://github.com/synnada-ai/recurse-web/pull/229)); the legacy website skill stays unchanged.
