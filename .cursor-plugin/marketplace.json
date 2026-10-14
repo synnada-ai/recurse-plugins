@@ -1,15 +1,21 @@
 {
-  "name": "synnada-recurse",
+  "name": "synnada-recurse-plugins",
   "owner": {
     "name": "Synnada"
   },
   "metadata": {
-    "description": "Recurse plugins by Synnada. Build reusable agentic workloads with serverless execution."
+    "description": "Recurse Tools and Recurse Agents plugins by Synnada."
   },
   "plugins": [
     {
       "name": "recurse",
       "source": "./plugins/recurse",
+      "description": "Discover and call hosted tools through Recurse. Inspect current schemas and prices, set a spending cap, and retrieve stored results.",
+      "logo": "assets/recurse-logo.svg"
+    },
+    {
+      "name": "recurse-agents",
+      "source": "./plugins/recurse-agents",
       "description": "Build reusable agentic workloads. Explore alternatives and check results with serverless execution on Recurse. Expose as MCP or run to completion.",
       "logo": "assets/recurse-logo.svg"
     }

@@ -1,15 +1,19 @@
 {
-  "name": "synnada-recurse",
+  "name": "synnada-recurse-plugins",
   "owner": {
     "name": "Synnada"
   },
   "metadata": {
-    "description": "Recurse plugins by Synnada. Build reusable agentic workloads with serverless execution."
+    "description": "Recurse Tools and Recurse Agents plugins by Synnada."
   },
   "plugins": [
     {
       "name": "recurse",
       "source": "./plugins/recurse"
+    },
+    {
+      "name": "recurse-agents",
+      "source": "./plugins/recurse-agents"
     }
   ]
 }
