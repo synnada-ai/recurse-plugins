@@ -2,14 +2,14 @@
 
 ![Recurse](plugins/recurse/assets/recurse-icon.png)
 
-Two plugins by Synnada, version 0.3.0:
+Two plugins by Synnada. This branch prepares version **0.4.0 as an unreleased TEST candidate**. The public release remains 0.3.0; do not publish or promote these candidate files before the approved release.
 
 | Plugin | Use it for | Skill |
 | --- | --- | --- |
-| **Recurse** (`recurse`) | Discover hosted tools, inspect current schemas and prices, call within a spending cap, and read stored results. | `recurse` |
+| **Recurse** (`recurse`) | Discover approved APIs and hosted tools; write and privately execute Python within an allowance; read durable results and charges. | `recurse` |
 | **Recurse Agents** (`recurse-agents`) | Define Python tools, prompts, and verifiers; build, run, and deploy custom agents. | `recurse-agents` |
 
-The Tools catalog is authoritative. Its contents can change without a plugin release. The Tools plugin connects five stable operations: `catalog_search`, `catalog_get`, `call`, `get_call`, and `cancel_call`. Responses are ordinary MCP results; pending calls are followed through `get_call`.
+The server catalogs are authoritative. Their contents can change without a plugin release. The Tools plugin connects 13 generic operations: `catalog_search`, `catalog_get`, `call`, `get_call`, `cancel_call`, `apis_search`, `apis_get`, `private_stage`, `private_complete`, `private_get_version`, `private_inspect`, `private_replay`, and `private_call`. Responses are ordinary MCP results; pending calls are followed through `get_call`. Private source uses a scoped HTTP upload rather than archive bytes or local paths inside MCP frames.
 
 Recurse Agents preserves the existing agent-authoring guidance. It has no preconfigured MCP server; deploying a tested agent creates a separate connection for that agent.
 
@@ -17,7 +17,7 @@ Recurse Agents preserves the existing agent-authoring guidance. It has no precon
 
 - A compatible Codex, Claude Code, or Cursor installation with plugins enabled.
 - Python 3.14 or newer and a Recurse account.
-- For Tools, Recurse SDK 0.2.5 or newer, which provides `recurse tools mcp serve`. Check `recurse tools mcp serve --help` before connecting. This checkout does not install the SDK.
+- For released published-tool access, Recurse SDK 0.2.5 provides `recurse tools mcp serve`. Private authoring in this TEST candidate needs the reviewed SDK 0.2.6 branch or wheel supplied with Stage 41b; that version is not yet published to PyPI. Check `recurse tools --help` before connecting. This checkout does not install the SDK.
 - For Agents, Recurse SDK 0.2.3 or newer.
 - Network access and sufficient account credit for paid work.
 
@@ -76,6 +76,16 @@ The native Tools package launches `recurse` with arguments `["tools", "mcp", "se
 Portable hosts use root `mcp.json`, including the Agent Plugins schema and explicit `type: "stdio"`. Compatibility manifests point to `.mcp.json`, which uses the host's command-based format. Both files contain one server named `recurse-tools`. Cursor's explicit `mcpServers` path overrides automatic `mcp.json` discovery; Claude Code merges the default and declared configuration by server name. OpenAI's root `extensions.com.openai` replaces its compatibility overlay, so the complete interface is copied into both. See the [OpenAI](https://developers.openai.com/plugins/build/plugins), [Claude Code](https://code.claude.com/docs/en/plugins-reference), and [Cursor](https://cursor.com/docs/reference/plugins) format references. Confirm one effective connection in the host; do not add a second manual Tools server.
 
 OpenAI upload archives are prepared separately with a verified remote HTTPS endpoint and OAuth. This native stdio checkout is not an OpenAI upload artifact. Portal review and publication remain separate steps.
+
+## Private Python tools on TEST
+
+Use the reviewed SDK candidate with `RECURSE_API_URL=https://api.dev.recurse.run` and `RECURSE_TOOLS_URL=https://tools.dev.recurse.run`; pass the variables through the host's MCP environment configuration. No production connection change is included.
+
+Discover APIs with `apis_search`, inspect the live schemas and ceilings with `apis_get`, then declare their returned IDs in the function's optional `apis` list in `tools.yaml`. Call them in Python through `from recurse_apis import call`. A private execution permits up to 20 sequential requests and keeps upstream credentials outside the network-blocked Python sandbox. Provider charges pass through at 1×; compute is 4× its cost basis. The approved cap covers preparation and execution, including API requests. Never increase it silently.
+
+The SDK exposes private staging, completion, preparation, and execution through `ToolsClient`. The CLI is `recurse tools run ./project --function FUNCTION --inputs inputs.json --idempotency-key REQUEST_KEY --max-cost-micro-usd APPROVED_CAP`. Remote clients use the generic private operations, build a real source archive, and transfer it over the returned scoped HTTP grant; a local path is not a remote upload. Read stored receipts to establish completion, charges, and confirmed cancellation. Publication remains restricted to the pinned operator account.
+
+A newly approved read API is a server catalog change. An agent discovers its live schema and declares the returned ID; it needs no new plugin version for that endpoint. Changes to connection configuration or these instructions still require a reviewed package release.
 
 ## Try and update
 

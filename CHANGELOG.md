@@ -1,5 +1,14 @@
 # Release notes
 
+## 0.4.0 — unreleased TEST candidate
+
+- Extend Recurse guidance with approved API discovery and private Python authoring, source upload, execution, exact replay, and cancellation through 13 generic MCP operations.
+- Document one allowance for preparation, API charges at 1×, and compute at 4×; keep credentials in the trusted parent.
+- Keep API schemas and price ceilings in the live server catalog so new approved endpoints need no package release.
+- Require the reviewed private-Tools-capable SDK 0.2.6 candidate for native TEST use; it has not been published to PyPI.
+- Preserve Recurse Agents instructions, configuration, starter prompts, assets, and licensing. Its manifest version alone follows the shared 0.4.0 package preparation.
+- Prepare private OpenAI TEST ZIP candidates separately; no install, upload, publication, or production promotion is included.
+
 ## 0.3.0 — 2026-10-14
 
 - Rename the existing agent-authoring package and skill to Recurse Agents (`recurse-agents`), preserving the current agent instructions and prompt examples.

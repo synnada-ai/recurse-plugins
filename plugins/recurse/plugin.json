@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "recurse",
-  "version": "0.3.0",
-  "description": "Discover and call hosted tools through Recurse. Inspect current schemas and prices, set a spending cap, and retrieve stored results.",
+  "version": "0.4.0",
+  "description": "Discover paid APIs and run private Python tools through Recurse. Inspect schemas and prices, set a spending cap, and retrieve stored results.",
   "author": {
     "name": "Synnada"
   },
@@ -12,8 +12,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Recurse",
-        "shortDescription": "Discover and call tools",
-        "longDescription": "Find current tools in the Recurse catalog, inspect their schemas and prices, and call them with exact versions and an explicit spending cap. Read stored results and request cancellation through five stable MCP operations. Requires the Tools-capable Recurse SDK and a Recurse account.",
+        "shortDescription": "Write and run Python tools",
+        "longDescription": "Use approved read APIs from agent-written Python tools, execute privately with an explicit spending cap, and read durable results and billing. Discover published tools and API schemas through 13 generic MCP operations. Requires the private-Tools-capable Recurse SDK and a Recurse account; the 0.2.6 SDK and this 0.4.0 package are unreleased TEST candidates.",
         "developerName": "Synnada",
         "category": "Productivity",
         "capabilities": [

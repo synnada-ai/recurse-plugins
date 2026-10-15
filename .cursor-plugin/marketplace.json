@@ -10,7 +10,7 @@
     {
       "name": "recurse",
       "source": "./plugins/recurse",
-      "description": "Discover and call hosted tools through Recurse. Inspect current schemas and prices, set a spending cap, and retrieve stored results.",
+      "description": "Discover paid APIs and run private Python tools through Recurse. Inspect schemas and prices, set a spending cap, and retrieve stored results.",
       "logo": "assets/recurse-logo.svg"
     },
     {
