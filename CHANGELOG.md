@@ -1,5 +1,14 @@
 # Release notes
 
+## 0.4.0 — 2026-10-14
+
+- Extend Recurse guidance with approved API discovery and private Python authoring, source upload, execution, exact replay, and cancellation through 13 generic MCP operations.
+- Document one allowance for preparation, API charges at 1×, and compute at 4×; keep credentials in the trusted parent.
+- Keep API schemas and price ceilings in the live server catalog so new approved endpoints need no package release.
+- Require Recurse SDK 0.2.6 or newer for native Tools use; production services are the default, with explicit TEST settings documented separately.
+- Preserve Recurse Agents instructions, configuration, starter prompts, assets, and licensing. Its manifest version alone follows the shared 0.4.0 release.
+- Prepare OpenAI upload archives separately from the native stdio packages; Portal upload, review, and publication remain separate owner actions.
+
 ## 0.3.0 — 2026-10-14
 
 - Rename the existing agent-authoring package and skill to Recurse Agents (`recurse-agents`), preserving the current agent instructions and prompt examples.
