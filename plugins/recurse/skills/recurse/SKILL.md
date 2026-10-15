@@ -36,7 +36,7 @@ def research(endpoint_id: str, arguments: dict) -> dict:
 
 This illustrates the helper only. A real tool must declare its permitted endpoint IDs and validate its own function inputs. Pass exactly the arguments required by the inspected API schema. Transform, combine, or calculate with the returned JSON in Python. Up to 20 API requests may run sequentially in one execution; an unresolved request prevents another paid submission. Use a separate call when the approved workload requires more work, within the user's allowance.
 
-Credentials stay in the trusted parent. The executing source receives no provider keys, Treg token, or unrestricted network access. Do not put credentials in source, manifests, inputs, uploads, or logs. API calls are unavailable during preparation or module import; invoke the helper from the function body.
+Credentials stay in the trusted parent. The executing source receives no provider keys, Treg token, or unrestricted network access. Do not put credentials in source, manifests, inputs, uploads, or logs. API calls are unavailable during preparation. Import the helper at module scope and invoke it from the registered function body.
 
 Execution remains bounded by the platform: inputs up to 64 KiB, final JSON up to 256 KiB, execution up to five minutes, and stored results normally available for 24 hours. These are ceilings, not reasons to expand a task beyond the user's request.
 
