@@ -42,7 +42,7 @@ Execution remains bounded by the platform: inputs up to 64 KiB, final JSON up to
 
 ## Run a local project through the SDK
 
-Private runs need the private-Tools-capable SDK. The 0.2.6 release candidate is being tested; it is not a published PyPI release. For TEST, use the reviewed SDK branch or wheel supplied for the milestone and the configured TEST account/service endpoints. Do not assume `pip install -U recurse-sdk` already provides candidate features. Keep normal production connections unchanged until release and promotion are authorized.
+Private runs require Recurse SDK 0.2.6 or later. Install or update it with `pip install -U recurse-sdk`, then use `recurse login` to sign in. The SDK uses the production services by default. Use explicitly configured TEST endpoints only when testing against a TEST account.
 
 Check `recurse tools --help` and the installed SDK's examples. After explicit account login, run an approved project with:
 

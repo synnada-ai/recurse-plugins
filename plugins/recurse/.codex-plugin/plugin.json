@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Recurse",
     "shortDescription": "Write and run Python tools",
-    "longDescription": "Use approved read APIs from agent-written Python tools, execute privately with an explicit spending cap, and read durable results and billing. Discover published tools and API schemas through 13 generic MCP operations. Requires the private-Tools-capable Recurse SDK and a Recurse account; the 0.2.6 SDK and this 0.4.0 package are unreleased TEST candidates.",
+    "longDescription": "Use approved read APIs from agent-written Python tools, execute privately with an explicit spending cap, and read durable results and billing. Discover published tools and API schemas through 13 generic MCP operations. Native Tools use requires Recurse SDK 0.2.6 or newer and a Recurse account.",
     "developerName": "Synnada",
     "category": "Productivity",
     "capabilities": [

@@ -2,7 +2,7 @@
 
 ![Recurse](plugins/recurse/assets/recurse-icon.png)
 
-Two plugins by Synnada. This branch prepares version **0.4.0 as an unreleased TEST candidate**. The public release remains 0.3.0; do not publish or promote these candidate files before the approved release.
+Two plugins by Synnada, version **0.4.0**.
 
 | Plugin | Use it for | Skill |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ Recurse Agents preserves the existing agent-authoring guidance. It has no precon
 
 - A compatible Codex, Claude Code, or Cursor installation with plugins enabled.
 - Python 3.14 or newer and a Recurse account.
-- For released published-tool access, Recurse SDK 0.2.5 provides `recurse tools mcp serve`. Private authoring in this TEST candidate needs the reviewed SDK 0.2.6 branch or wheel supplied with Stage 41b; that version is not yet published to PyPI. Check `recurse tools --help` before connecting. This checkout does not install the SDK.
+- For Tools, Recurse SDK 0.2.6 or newer provides `recurse tools mcp serve` and private Python execution. Install or update it with `pip install -U recurse-sdk`, then check `recurse tools --help` before connecting. This checkout does not install the SDK.
 - For Agents, Recurse SDK 0.2.3 or newer.
 - Network access and sufficient account credit for paid work.
 
@@ -30,9 +30,9 @@ Earlier releases used `recurse@synnada-recurse` for agent authoring. The new mar
 Also inspect any standalone agent skill installed from the legacy `/SKILL.md` URL or the older private `recurse@personal` catalog. Keep that guidance until Agents is verified, then disable or remove its old discovery entry before installing Tools.
 
 1. Add this checkout as a separate marketplace and install `recurse-agents@synnada-recurse-plugins`.
-2. Start a new session. Verify **Recurse Agents**, version 0.3.0, and the `recurse-agents` skill with the existing agent workflow.
+2. Start a new session. Verify **Recurse Agents**, version 0.4.0, and the `recurse-agents` skill with the existing agent workflow.
 3. Disable or remove the legacy `recurse@synnada-recurse` agent plugin using the host's supported plugin controls. Preserve its catalog and cached package until the new installation is verified.
-4. Install `recurse@synnada-recurse-plugins` for Tools. Start a new session and verify **Recurse**, version 0.3.0, and exactly one `recurse-tools` server.
+4. Install `recurse@synnada-recurse-plugins` for Tools. Start a new session and verify **Recurse**, version 0.4.0, and exactly one `recurse-tools` server.
 
 Codex CLI 0.151.0 verified distinct cached identities for the released legacy package and the new Agents package, followed by removal of the legacy plugin and installation of Tools. A fresh bundled Codex 0.162.0-alpha.17.2 session loaded both skills and inspected the live TEST catalog. Refreshing the old Git marketplace against the new catalog failed on the name mismatch and preserved its cached Agent snapshot. Claude manifests passed strict validation; Claude and Cursor behavior still need owner UAT. If adding the new source replaces the legacy identity or its instructions, stop the migration and keep the legacy installation separate.
 
@@ -71,15 +71,15 @@ Before replacing an existing `recurse` directory, preserve and disable the legac
 
 ## Connection formats
 
-The native Tools package launches `recurse` with arguments `["tools", "mcp", "serve"]` over stdio. The package contains no fixed service URL or secrets. For TEST, pass `RECURSE_API_URL=https://api.dev.recurse.run` and `RECURSE_TOOLS_URL=https://tools.dev.recurse.run` through the host's supported MCP environment settings. Codex filters ambient variables for MCP subprocesses; setting them only in the parent shell is insufficient. M5 used a per-session environment override with the unchanged command and arguments and verified one effective connection. Default production connection is checked after promotion.
+The native Tools package launches `recurse` with arguments `["tools", "mcp", "serve"]` over stdio. The package contains no fixed service URL or secrets; the SDK uses production by default. For TEST, pass `RECURSE_API_URL=https://api.dev.recurse.run` and `RECURSE_TOOLS_URL=https://tools.dev.recurse.run` through the host's supported MCP environment settings. Codex filters ambient variables for MCP subprocesses; setting them only in the parent shell is insufficient. Historical M5 TEST UAT used a per-session environment override with the unchanged command and arguments and verified one effective connection.
 
 Portable hosts use root `mcp.json`, including the Agent Plugins schema and explicit `type: "stdio"`. Compatibility manifests point to `.mcp.json`, which uses the host's command-based format. Both files contain one server named `recurse-tools`. Cursor's explicit `mcpServers` path overrides automatic `mcp.json` discovery; Claude Code merges the default and declared configuration by server name. OpenAI's root `extensions.com.openai` replaces its compatibility overlay, so the complete interface is copied into both. See the [OpenAI](https://developers.openai.com/plugins/build/plugins), [Claude Code](https://code.claude.com/docs/en/plugins-reference), and [Cursor](https://cursor.com/docs/reference/plugins) format references. Confirm one effective connection in the host; do not add a second manual Tools server.
 
 OpenAI upload archives are prepared separately with a verified remote HTTPS endpoint and OAuth. This native stdio checkout is not an OpenAI upload artifact. Portal review and publication remain separate steps.
 
-## Private Python tools on TEST
+## Private Python tools
 
-Use the reviewed SDK candidate with `RECURSE_API_URL=https://api.dev.recurse.run` and `RECURSE_TOOLS_URL=https://tools.dev.recurse.run`; pass the variables through the host's MCP environment configuration. No production connection change is included.
+Use Recurse SDK 0.2.6 or newer and sign in explicitly with `recurse login`. Production is the default. For TEST UAT, use the TEST endpoint variables above through the host's MCP environment configuration.
 
 Discover APIs with `apis_search`, inspect the live schemas and ceilings with `apis_get`, then declare their returned IDs in the function's optional `apis` list in `tools.yaml`. Call them in Python through `from recurse_apis import call`. A private execution permits up to 20 sequential requests and keeps upstream credentials outside the network-blocked Python sandbox. Provider charges pass through at 1×; compute is 4× its cost basis. The approved cap covers preparation and execution, including API requests. Never increase it silently.
 
