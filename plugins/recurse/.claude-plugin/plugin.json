@@ -1,6 +1,6 @@
 {
   "name": "recurse",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Discover paid APIs and run private Python tools through Recurse. Inspect schemas and prices, set a spending cap, and retrieve stored results.",
   "author": {
     "name": "Synnada"

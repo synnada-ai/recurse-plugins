@@ -1,5 +1,13 @@
 # Release notes
 
+## 0.4.1 — 2026-10-16
+
+- Lead with individual key setup, eligible live API discovery and private Tools execution.
+- Keep exact example tasks, validation labels, spending authorization and 1× provider / 4× compute receipts explicit.
+- Document the root skill’s Tools alias and retain separate hosted-agent instructions unchanged.
+- Pin canonical website snapshots in `source.json`; native identities and 13 generic MCP operations stay unchanged.
+- OpenAI portal publication and upload archives remain separate; no archives are included here.
+
 ## 0.4.0 — 2026-10-14
 
 - Extend Recurse guidance with approved API discovery and private Python authoring, source upload, execution, exact replay, and cancellation through 13 generic MCP operations.
