@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "recurse",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Discover paid APIs and run private Python tools through Recurse. Inspect schemas and prices, set a spending cap, and retrieve stored results.",
   "author": {
     "name": "Synnada"
@@ -13,7 +13,7 @@
       "interface": {
         "displayName": "Recurse",
         "shortDescription": "Write and run Python tools",
-        "longDescription": "Use approved read APIs from agent-written Python tools, execute privately with an explicit spending cap, and read durable results and billing. Discover published tools and API schemas through 13 generic MCP operations. Native Tools use requires Recurse SDK 0.2.6 or newer and a Recurse account.",
+        "longDescription": "Use eligible APIs from agent-written Python tools, execute privately with an explicit spending cap, and read durable results and billing. Discover published tools and API schemas through 13 generic MCP operations. Native Tools use requires Recurse SDK 0.2.7 or newer and a Recurse account.",
         "developerName": "Synnada",
         "category": "Productivity",
         "capabilities": [

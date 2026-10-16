@@ -2,11 +2,11 @@
 
 ![Recurse](plugins/recurse/assets/recurse-icon.png)
 
-Two plugins by Synnada, version **0.4.0**.
+Two plugins by Synnada, version **0.4.1**.
 
 | Plugin | Use it for | Skill |
 | --- | --- | --- |
-| **Recurse** (`recurse`) | Discover approved APIs and hosted tools; write and privately execute Python within an allowance; read durable results and charges. | `recurse` |
+| **Recurse** (`recurse`) | Discover eligible APIs and hosted tools; write and privately execute Python within an allowance; read durable results and charges. | `recurse` |
 | **Recurse Agents** (`recurse-agents`) | Define Python tools, prompts, and verifiers; build, run, and deploy custom agents. | `recurse-agents` |
 
 The server catalogs are authoritative. Their contents can change without a plugin release. The Tools plugin connects 13 generic operations: `catalog_search`, `catalog_get`, `call`, `get_call`, `cancel_call`, `apis_search`, `apis_get`, `private_stage`, `private_complete`, `private_get_version`, `private_inspect`, `private_replay`, and `private_call`. Responses are ordinary MCP results; pending calls are followed through `get_call`. Private source uses a scoped HTTP upload rather than archive bytes or local paths inside MCP frames.
@@ -17,11 +17,11 @@ Recurse Agents preserves the existing agent-authoring guidance. It has no precon
 
 - A compatible Codex, Claude Code, or Cursor installation with plugins enabled.
 - Python 3.14 or newer and a Recurse account.
-- For Tools, Recurse SDK 0.2.6 or newer provides `recurse tools mcp serve` and private Python execution. Install or update it with `pip install -U recurse-sdk`, then check `recurse tools --help` before connecting. This checkout does not install the SDK.
+- For Tools, Recurse SDK 0.2.7 or newer provides `recurse tools mcp serve` and private Python execution. Install or update it with `pip install -U recurse-sdk`, then check `recurse tools --help` before connecting. This checkout does not install the SDK.
 - For Agents, Recurse SDK 0.2.3 or newer.
 - Network access and sufficient account credit for paid work.
 
-Authenticate explicitly with `recurse login` before connecting. The Tools bridge uses the existing login and does not open a browser automatically. Keep credentials out of plugin files. Hosted calls can incur charges: inspect the current price and agree on an allowance before submitting work.
+Import your individual Tools key from Setup through `recurse tools login --key-stdin` before connecting; the SDK verifies and stores it in your operating-system keychain. Existing `recurse login` credentials remain supported when no Tools key is imported. The Tools bridge uses the existing login and does not open a browser automatically. Keep credentials out of plugin files. Hosted calls can incur charges: inspect the current price and agree on an allowance before submitting work.
 
 ## Migrate an existing agent plugin
 
@@ -30,9 +30,9 @@ Earlier releases used `recurse@synnada-recurse` for agent authoring. The new mar
 Also inspect any standalone agent skill installed from the legacy `/SKILL.md` URL or the older private `recurse@personal` catalog. Keep that guidance until Agents is verified, then disable or remove its old discovery entry before installing Tools.
 
 1. Add this checkout as a separate marketplace and install `recurse-agents@synnada-recurse-plugins`.
-2. Start a new session. Verify **Recurse Agents**, version 0.4.0, and the `recurse-agents` skill with the existing agent workflow.
+2. Start a new session. Verify **Recurse Agents**, version 0.4.1, and the `recurse-agents` skill with the existing agent workflow.
 3. Disable or remove the legacy `recurse@synnada-recurse` agent plugin using the host's supported plugin controls. Preserve its catalog and cached package until the new installation is verified.
-4. Install `recurse@synnada-recurse-plugins` for Tools. Start a new session and verify **Recurse**, version 0.4.0, and exactly one `recurse-tools` server.
+4. Install `recurse@synnada-recurse-plugins` for Tools. Start a new session and verify **Recurse**, version 0.4.1, and exactly one `recurse-tools` server.
 
 Codex CLI 0.151.0 verified distinct cached identities for the released legacy package and the new Agents package, followed by removal of the legacy plugin and installation of Tools. A fresh bundled Codex 0.162.0-alpha.17.2 session loaded both skills and inspected the live TEST catalog. Refreshing the old Git marketplace against the new catalog failed on the name mismatch and preserved its cached Agent snapshot. Claude manifests passed strict validation; Claude and Cursor behavior still need owner UAT. If adding the new source replaces the legacy identity or its instructions, stop the migration and keep the legacy installation separate.
 
@@ -79,13 +79,13 @@ OpenAI upload archives are prepared separately with a verified remote HTTPS endp
 
 ## Private Python tools
 
-Use Recurse SDK 0.2.6 or newer and sign in explicitly with `recurse login`. Production is the default. For TEST UAT, use the TEST endpoint variables above through the host's MCP environment configuration.
+Use Recurse SDK 0.2.7 or newer and import an individual Tools key with `recurse tools login --key-stdin`. Production is the default. For TEST UAT, use the TEST endpoint variables above through the host's MCP environment configuration.
 
 Discover APIs with `apis_search`, inspect the live schemas and ceilings with `apis_get`, then declare their returned IDs in the function's optional `apis` list in `tools.yaml`. Call them in Python through `from recurse_apis import call`. A private execution permits up to 20 sequential requests and keeps upstream credentials outside the network-blocked Python sandbox. Provider charges pass through at 1×; compute is 4× its cost basis. The approved cap covers preparation and execution, including API requests. Never increase it silently.
 
 The SDK exposes private staging, completion, preparation, and execution through `ToolsClient`. The CLI is `recurse tools run ./project --function FUNCTION --inputs inputs.json --idempotency-key REQUEST_KEY --max-cost-micro-usd APPROVED_CAP`. Remote clients use the generic private operations, build a real source archive, and transfer it over the returned scoped HTTP grant; a local path is not a remote upload. Read stored receipts to establish completion, charges, and confirmed cancellation. Publication remains restricted to the pinned operator account.
 
-A newly approved read API is a server catalog change. An agent discovers its live schema and declares the returned ID; it needs no new plugin version for that endpoint. Changes to connection configuration or these instructions still require a reviewed package release.
+A newly eligible API is a server catalog change. An agent discovers its live schema and declares the returned ID; it needs no new plugin version for that endpoint. Changes to connection configuration or these instructions still require a reviewed package release.
 
 ## Try and update
 
@@ -93,7 +93,7 @@ For Tools, ask: “Find a tool for my task and inspect its inputs and price.” 
 
 For Agents, ask: “Design a Python workload that tests code changes against a benchmark.” Review the proposal, independent checks, and allowance before hosted execution. Inspect terminal status, completion evidence, and artifacts before claiming success.
 
-Each release bundles fixed canonical snapshots: [Tools skill](https://recurse.run/tools/SKILL.md) and [Agents skill](https://recurse.run/agents/SKILL.md). The [legacy skill URL](https://recurse.run/SKILL.md) continues to contain agent guidance during migration. Installed instructions change only when the package is updated.
+Each release bundles fixed canonical snapshots: [Tools skill](https://recurse.run/tools/SKILL.md) and [Agents skill](https://recurse.run/agents/SKILL.md). The [root skill URL](https://recurse.run/SKILL.md) now mirrors Tools; existing agent authoring guidance stays at `/agents/SKILL.md`. Keep `tools.yaml` and `agent.yaml` separate. Installed instructions change only when the package is updated.
 
 Update the checkout, use the host's supported plugin update control for the selected new identity, and start a new session. Keep the old marketplace selector separate throughout migration.
 
