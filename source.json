@@ -1,12 +1,12 @@
 {
   "repository": "https://github.com/synnada-ai/recurse-web.git",
-  "commit": "2ad2029b13718e7fc9e560fad18a7aaadc6f752c",
-  "plugin_version": "0.4.1",
+  "commit": "f77b6c4fddfbc389f592933fc8179578cc9a39e7",
+  "plugin_version": "0.4.2",
   "files": [
     {
       "source_path": "public/tools/SKILL.md",
       "plugin_path": "plugins/recurse/skills/recurse/SKILL.md",
-      "sha256": "c146cd6b1735b436a9112665c28ca738e38ca0ca98a1ec207fb83c0d9e6fc115"
+      "sha256": "72d9b6d9301d8036de807971cab6c5d50565a35ed3fa025cd1794829edb7cc81"
     },
     {
       "source_path": "public/agents/SKILL.md",
