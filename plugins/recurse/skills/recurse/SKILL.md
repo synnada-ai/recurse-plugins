@@ -61,6 +61,17 @@ Keep existing agent guidance available at https://recurse.run/agents/SKILL.md. I
 `recurse` skill is for agent authoring, verify its replacement as `recurse-agents` before disabling
 its old discovery entry. Do not install both root and Tools aliases as separate copies.
 
+## Recover from insufficient balance
+
+Tools-only keys do not authorize the account-wide billing CLI. If preparation or execution is
+rejected for insufficient available balance, retain the exact task, source and request identity.
+Send the customer to https://recurse.run/account/wallet (https://dev.recurse.run/account/wallet for
+TEST). Top-ups start at $5. The website checks the confirmed server balance; a checkout return
+is not confirmation of credit. Ask the customer to return after funds are confirmed, then retry
+the existing request with its original idempotency key and arguments. Never silently raise the
+approved allowance or create a new paid request to recover uncertain work. An allowance above
+available balance may be rejected even when expected charges are smaller.
+
 ## Discover APIs and write a private tool
 
 Use `apis_search` with `query`, `limit`, and an optional `cursor`. Inspect each chosen endpoint through `apis_get` with `endpoint_id`. Read its version, `input_schema`, `response_schema`, and `max_cost_micro_usd` ceiling. The catalog includes all upstream entries and explains current execution eligibility. Inspect access,

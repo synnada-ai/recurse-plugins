@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "recurse",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Discover paid APIs and run private Python tools through Recurse. Inspect schemas and prices, set a spending cap, and retrieve stored results.",
   "author": {
     "name": "Synnada"

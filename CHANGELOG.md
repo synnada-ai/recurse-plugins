@@ -1,5 +1,13 @@
 # Release notes
 
+## 0.4.2 — 2026-10-16 (candidate)
+
+- Align the Tools instructions with the reviewed website source at `f77b6c4fddfbc389f592933fc8179578cc9a39e7`.
+- Recover low balance through the website Wallet, whose minimum top-up is $5. Retain the original task, approved cap and request identity while awaiting confirmed funds.
+- Keep Tools-only keys out of the account billing CLI and preserve existing execution, pricing and server authority.
+- Recurse Agents instructions remain byte-identical; only its manifests follow the shared 0.4.2 version convention. Native MCP configuration and all 13 generic Tools operations are unchanged.
+- Source alignment only: TEST UAT, release, tagging and publication remain separate. No upload archives are prepared.
+
 ## 0.4.1 — 2026-10-16
 
 - Lead with individual key setup, eligible live API discovery and private Tools execution.

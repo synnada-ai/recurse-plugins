@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "recurse-agents",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Build reusable agentic workloads. Explore alternatives and check results with serverless execution on Recurse. Expose as MCP or run to completion.",
   "author": {
     "name": "Synnada"
